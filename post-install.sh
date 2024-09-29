@@ -35,8 +35,8 @@ if [ "${OS}" = "Ubuntu" ]; then
     systemctl stop apache2
     systemctl disable apache2
     sed \
-        -e "s/yum -y install docker/apt install docker.io -y/g" \
-        -e "s/yum -y install golang-bin/apt install golang-go -y/g" \
+        -e "s/yum -y install docker/apt-get install docker.io -y/g" \
+        -e "s/yum -y install golang-bin/apt-get install golang-go -y/g" \
         -e "s/ec2-metadata -i | awk '{print \$2}'/ec2metadata --instance-id/g" \
         -e "s/ec2-metadata -p | awk '{print \$2}'/ec2metadata --public-hostname/g" \
         -e "s/ec2-metadata -t | awk '{print \$2}'/ec2metadata --instance-type/g" \
