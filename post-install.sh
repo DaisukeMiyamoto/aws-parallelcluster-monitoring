@@ -30,6 +30,7 @@ case ${cfn_node_type} in
     ;;
 esac
 
+OS=$(. /etc/os-release; echo $NAME)
 if [ "${OS}" = "Ubuntu" ]; then
     systemctl stop apache2
     sed \
