@@ -41,8 +41,8 @@ if [ "${OS}" = "Ubuntu" ]; then
         -e "s/ec2-metadata -t/ec2metadata --instance-type/g" \
         "${setup_command_path}/${setup_command}" \
         > "${setup_command_path}/tmp-${setup_command}"
-    bash -x "${setup_command_path}/tmp-${setup_command}" >/tmp/monitoring-setup.log 2>&1
+    bash -x "${setup_command_path}/tmp-${setup_command}" | tee /tmp/monitoring-setup.log 2>&1
 else
-    bash -x "${setup_command_path}/${setup_command}" >/tmp/monitoring-setup.log 2>&1
+    bash -x "${setup_command_path}/${setup_command}" | tee /tmp/monitoring-setup.log 2>&1
 fi
 exit $?
