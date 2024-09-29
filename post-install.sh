@@ -33,6 +33,7 @@ esac
 OS=$(. /etc/os-release; echo $NAME)
 if [ "${OS}" = "Ubuntu" ]; then
     systemctl stop apache2
+    systemctl disable apache2
     sed \
         -e "s/yum -y install docker/apt install docker.io -y/g" \
         -e "s/yum -y install golang-bin/apt install golang-go -y/g" \
