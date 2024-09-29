@@ -37,9 +37,9 @@ if [ "${OS}" = "Ubuntu" ]; then
     sed \
         -e "s/yum -y install docker/apt install docker.io -y/g" \
         -e "s/yum -y install golang-bin/apt install golang-go -y/g" \
-        -e "s/ec2-metadata -i | awk '{print $2}'/ec2metadata --instance-id/g" \
-        -e "s/ec2-metadata -p | awk '{print $2}'/ec2metadata --public-hostname/g" \
-        -e "s/ec2-metadata -t | awk '{print $2}'/ec2metadata --instance-type/g" \
+        -e "s/ec2-metadata -i | awk '{print \$2}'/ec2metadata --instance-id/g" \
+        -e "s/ec2-metadata -p | awk '{print \$2}'/ec2metadata --public-hostname/g" \
+        -e "s/ec2-metadata -t | awk '{print \$2}'/ec2metadata --instance-type/g" \
         "${setup_command_path}/${setup_command}" \
         > "${setup_command_path}/tmp-${setup_command}"
     bash -x "${setup_command_path}/tmp-${setup_command}" | tee /tmp/monitoring-setup.log 2>&1
